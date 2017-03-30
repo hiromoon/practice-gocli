@@ -37,7 +37,7 @@ func main() {
            Name: "base64",
            Aliases: []string{"b"},
            Usage: "hello worldを表示します",
-           Action: cmd.EncodeAction,
+           Action: cmd.DecodeAction,
         },
   }
 

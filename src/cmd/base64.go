@@ -8,15 +8,19 @@ import (
 )
 
 func EncodeAction(c *cli.Context) {
-  var paramFirst = ""
+  var data = ""
   if len(c.Args()) > 0 {
-    paramFirst = c.Args().First()
+    data = c.Args().First()
   }
-  encodedStr := base64.StdEncoding.EncodeToString([]byte(paramFirst))
+  encodedStr := base64.StdEncoding.EncodeToString([]byte(data))
   fmt.Println(encodedStr)
 }
 
-func DecodeAction(data string) {
+func DecodeAction(c *cli.Context) {
+  var data = ""
+  if len(c.Args()) > 0 {
+    data = c.Args().First()
+  }
   decodedStr, _ := base64.StdEncoding.DecodeString(data)
-  fmt.Println(decodedStr)
+  fmt.Println(string(decodedStr))
 }
