@@ -7,6 +7,15 @@ import (
   "github.com/urfave/cli"
 )
 
+func Base64Action(c *cli.Context) {
+  isDecode := c.Bool("decode")
+  if isDecode {
+    DecodeAction(c)
+  } else {
+    EncodeAction(c)
+  }
+}
+
 func EncodeAction(c *cli.Context) {
   var data = ""
   if len(c.Args()) > 0 {

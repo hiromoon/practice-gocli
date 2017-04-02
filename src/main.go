@@ -17,10 +17,6 @@ func main() {
 
   app.Flags = []cli.Flag{
           cli.BoolFlag{
-            Name: "dryrun, d",
-            Usage: "グローバルオプション dryrun",
-          },
-          cli.BoolFlag{
             Name: "urlsafe, u",
             Usage: "URLSafe flag",
           },
@@ -30,14 +26,20 @@ func main() {
         {
            Name: "hello",
            Aliases: []string{"h"},
-           Usage: "hello worldを表示します",
+           Usage: "print 'Hello, World!!'",
            Action: helloAction,
         },
         {
            Name: "base64",
            Aliases: []string{"b"},
-           Usage: "hello worldを表示します",
-           Action: cmd.DecodeAction,
+           Usage: "base64 encoding(decoding) command",
+           Action: cmd.Base64Action,
+           Flags: []cli.Flag{
+             cli.BoolFlag{
+               Name: "decode, d",
+               Usage: "decoding base64",
+             },
+           },
         },
   }
 
