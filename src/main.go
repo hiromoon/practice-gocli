@@ -5,6 +5,7 @@ import (
   "os"
 
   "github.com/urfave/cli"
+  "github.com/joho/godotenv"
 
   "./cmd"
 )
@@ -41,6 +42,11 @@ func main() {
              },
            },
         },
+        {
+           Name: "config",
+           Usage: "go tool config command",
+           Action: cmd.ConfigAction,
+        },
   }
 
   app.Before = func(c *cli.Context) error {
@@ -52,8 +58,15 @@ func main() {
     fmt.Println("Finish")
     return nil
   }
-
+  loadEnv()
   app.Run(os.Args)
+}
+
+func loadEnv() {
+  err := godotenv.Load()
+  if err != nil {
+    fmt.Println("Error loading .env file")
+  }
 }
 
 func helloAction(c *cli.Context) {
