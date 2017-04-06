@@ -25,12 +25,6 @@ func main() {
 
   app.Commands = []cli.Command{
         {
-           Name: "hello",
-           Aliases: []string{"h"},
-           Usage: "print 'Hello, World!!'",
-           Action: helloAction,
-        },
-        {
            Name: "base64",
            Aliases: []string{"b"},
            Usage: "base64 encoding(decoding) command",
@@ -67,17 +61,4 @@ func loadEnv() {
   if err != nil {
     fmt.Println("Error loading .env file")
   }
-}
-
-func helloAction(c *cli.Context) {
-  var isDry = c.GlobalBool("dryrun")
-  if isDry {
-    fmt.Println("this is dry-run")
-  }
-  var paramFirst = ""
-  if len(c.Args()) > 0 {
-    paramFirst = c.Args().First()
-  }
-
-  fmt.Printf("Hello World!! %s\n", paramFirst)
 }
