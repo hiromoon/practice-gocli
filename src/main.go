@@ -41,6 +41,11 @@ func main() {
            Usage: "go tool config command",
            Action: cmd.ConfigAction,
         },
+        {
+           Name: "get",
+           Usage: "http get request",
+           Action: cmd.GetAction,
+        },
   }
 
   app.Before = func(c *cli.Context) error {
